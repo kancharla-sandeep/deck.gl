@@ -140,6 +140,35 @@ export class App extends Component {
     );
   }
 
+  _renderInfoBox() {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          right: 8,
+          top: 8,
+          width: 140,
+          background: 'rgba(0,0,255,0.3)',
+          borderRadius: 8,
+          color: 'white',
+          padding: 8,
+          fontSize: 12
+        }}
+      >
+        Data provided by{' '}
+        <a
+          style={{color: 'white'}}
+          href="http://www.opensky-network.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          The OpenSky Network, http://www.opensky-network.org
+        </a>
+        {this.state.hoverObject && this._renderHoverObject()}
+      </div>
+    );
+  }
+
   render() {
     const {viewState, controller = true, baseMap = true} = this.props;
 
@@ -160,30 +189,7 @@ export class App extends Component {
             />
           )}
         </DeckGL>
-        <div
-          style={{
-            position: 'fixed',
-            right: 8,
-            top: 8,
-            width: 140,
-            background: 'rgba(0,0,255,0.3)',
-            borderRadius: 8,
-            color: 'white',
-            padding: 8,
-            fontSize: 12
-          }}
-        >
-          Data provided by{' '}
-          <a
-            style={{color: 'white'}}
-            href="http://www.opensky-network.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            The OpenSky Network, http://www.opensky-network.org
-          </a>
-          {this.state.hoverObject && this._renderHoverObject()}
-        </div>
+        {/* this._renderInfoBox() */}
       </Fragment>
     );
   }
